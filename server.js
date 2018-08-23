@@ -2,6 +2,18 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+var jsdom = require('jsdom');
+const { JSDOM } = jsdom;
+const { window } = new JSDOM();
+const { document } = (new JSDOM('')).window;
+global.document = document;
+
+var $ = jQuery = require('jquery')(window);
+
+
+
+var res = $.get('https://jsonplaceholder.typicode.com/photos');
+
 const port = process.env.PORT || 3000;
 var app = express();
 
